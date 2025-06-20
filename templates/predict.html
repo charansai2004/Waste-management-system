@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Predict - Municipal Waste Classification{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Image Classification</h1>
+        <p>Upload an image of waste material to classify it as Biodegradable, Recyclable, or Trash</p>
+    </div>
+</section>
+
+<section class="predict-section">
+    <div class="container">
+        <div class="predict-card">
+            <!-- Upload Area -->
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content" id="uploadContent">
+                    <i class="fas fa-camera upload-icon"></i>
+                    <h3>Drop your image here, or click to browse</h3>
+                    <p>Supports: JPG, JPEG, PNG, GIF (Max 16MB)</p>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-upload"></i>
+                        Choose File
+                    </button>
+                </div>
+                <div class="preview-content" id="previewContent" style="display: none;">
+                    <img id="previewImage" src="" alt="Preview">
+                    <p id="fileName"></p>
+                    <button type="button" class="btn btn-danger" onclick="removeImage()">Remove Image</button>
+                </div>
+            </div>
+            
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+            
+            <!-- Predict Button -->
+            <div class="predict-button-container">
+                <button id="predictButton" class="btn btn-success btn-large" onclick="predictImage()" disabled>
+                    <span id="buttonText">PREDICT</span>
+                    <i id="loadingIcon" class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>
+            </div>
+            
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>Tips for Better Results:</h3>
+                <ul>
+                    <li>Ensure the waste item is clearly visible and well-lit</li>
+                    <li>Avoid blurry or low-resolution images</li>
+                    <li>Center the item in the frame with minimal background clutter</li>
+                    <li>Use good lighting conditions for optimal classification accuracy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Modal -->
+<div class="modal" id="resultsModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Classification Results</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="result-content">
+                <div class="result-image">
+                    <img id="resultImage" src="" alt="Classified item">
+                    <p id="resultFileName"></p>
+                </div>
+                <div class="result-info">
+                    <div class="classification-complete">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Classification Complete</span>
+                    </div>
+                    <div class="result-category" id="resultCategory">
+                        <i id="categoryIcon" class="fas fa-leaf"></i>
+                        <span id="categoryText">Biodegradable</span>
+                    </div>
+                    <p id="categoryDescription"></p>
+                </div>
+            </div>
+            <div class="recommended-actions">
+                <h3>Recommended Actions:</h3>
+                <div id="actionsList"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="window.location.href='{{ url_for('predict') }}'">
+                <i class="fas fa-camera"></i>
+                Classify Another Item
+            </button>
+            <button class="btn btn-outline" onclick="window.location.href='{{ url_for('index') }}'">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

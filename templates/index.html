@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Municipal Waste Classification{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Welcome to <span class="highlight">Municipal Waste Classification</span></h1>
+        <p>This platform allows you to upload images of waste materials, and our advanced machine learning model will classify them into appropriate categories. Proper waste classification helps in efficient recycling and waste management, making our environment cleaner and more sustainable.</p>
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">
+            GET STARTED
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Our AI-powered system accurately classifies waste into three main categories to help you make informed decisions about disposal and recycling.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon biodegradable">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Biodegradable</h3>
+                <p>Organic waste that naturally decomposes, including food scraps, yard waste, and paper products that can be composted.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon recyclable">
+                    <i class="fas fa-recycle"></i>
+                </div>
+                <h3>Recyclable</h3>
+                <p>Materials that can be processed and reused, such as plastic containers, glass bottles, metal cans, and clean paper.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon trash">
+                    <i class="fas fa-trash"></i>
+                </div>
+                <h3>Trash</h3>
+                <p>Non-recyclable waste that must be disposed of in landfills, including contaminated materials and non-biodegradable items.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>Ready to Start Classifying Your Waste?</h2>
+        <p>Upload an image and let our AI determine the best disposal method for your waste.</p>
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">
+            Start Classification
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+{% endblock %}

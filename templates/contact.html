@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Municipal Waste Classification{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <p class="page-subtitle">CONTACT</p>
+        <h1>Contact <span class="highlight">Us</span></h1>
+        <p class="page-description">We are here to help you make the best choices for a sustainable environment and effective waste management. Reach out to us for more information about our services, or to learn how we can help you ensure proper classification and disposal of municipal waste.</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Location:</h3>
+                        <p>SumitraPuram<br>Parvathipuram Manyam,535463</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email:</h3>
+                        <p>charan12092004@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Call:</h3>
+                        <p>+91 8520834029</p>
+                    </div>
+                </div>
+                
+                <!-- Map Placeholder -->
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Interactive Map</p>
+                    <span>Location: Parvathipuram Manyam,Andhra pradesh,India</span>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Message" rows="6" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                </form>
+                
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+                    <button class="btn btn-primary" onclick="resetForm()">Send Another Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
